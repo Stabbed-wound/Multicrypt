@@ -2,20 +2,27 @@
 
 ## What
 
-Multicrypt is what I (due to a lack of proper terminology) call a multiseat
-encryption format, in reference to a multiseat operating system. It allows for
-one block of ciphertext to encode multiple seperate plaintexts under seperate
-multi-key access with each "seat" being completely hidden from each other.
+Multicrypt is an encryption format designed for full disk encryption inspired by
+Sun Knudson's [blockcrypt](https://github.com/superbacked/blockcrypt). It allows
+for multiple plaintexts to be encoded into one block of ciphertext, each under
+multiple keys, while concealing their existence from each other with no forensic
+fingerprint.
 
 ## Why
 
-It's like [Veracrypt](https://veracrypt.io) but with up to 32 volumes and as
-such fulfills a very similar purpose. The primary advantage over veracrypt is
-that each seat (volume) can be opened with multiple keys, similarly to LUKS.
+To get the best of both worlds from Veracrypt and LUKS: Veracrypt is
+steganographically sound but has a limited feature set compared to LUKS; LUKS is
+highly customisable and allows for multiple keys to be used to access the
+partition but hides very little about itself. Multicrypt is the combination of
+the two that I couldn't find.
 
 ## How
 
-Current version: [1.0](Versions/v1.md)
+### Format
+
+- [1.0](Formats/v1.0.md) (current)
+
+### Explanation
 
 The header section contains 32 keyslots which can be decrypted with the entered
 password. Each slot contains the master key for the metadata contained in the
